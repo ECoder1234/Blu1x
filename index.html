@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blu1x SMP</title>
+
+  <!-- STYLE (COMBINED) -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a1cff, #00c6ff);
+      color: white;
+      min-height: 100vh;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      margin: 10px;
+      border-radius: 12px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .discord {
+      background: #5865F2;
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .ip {
+      background: white;
+      color: #0a1cff;
+    }
+
+    .ip-text {
+      margin-top: 15px;
+      font-size: 1.1rem;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 50px 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.15);
+      padding: 25px;
+      border-radius: 16px;
+      width: 260px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <h1>Blu1x SMP</h1>
+    <p>A chill blue-themed Minecraft SMP</p>
+
+    <div class="buttons">
+      <a href="https://discord.gg/YOUR_INVITE" target="_blank" class="btn discord">
+        Join Discord
+      </a>
+      <button class="btn ip" onclick="copyIP()">
+        Copy Server IP
+      </button>
+    </div>
+
+    <p class="ip-text">IP: <strong>blu1xsmp.aternos.me</strong></p>
+  </header>
+
+  <section class="features">
+    <div class="card">
+      <h2>💙 Community</h2>
+      <p>Friendly players, active Discord, no toxicity.</p>
+    </div>
+
+    <div class="card">
+      <h2>⛏️ Survival SMP</h2>
+      <p>Vanilla-style survival with fun events.</p>
+    </div>
+
+    <div class="card">
+      <h2>🌍 Online</h2>
+      <p>Hosted on Aternos and starts when players join.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Blu1x SMP • Not affiliated with Mojang</p>
+  </footer>
+
+  <!-- SCRIPT (COMBINED) -->
+  <script>
+    function copyIP() {
+      navigator.clipboard.writeText("blu1xsmp.aternos.me");
+      alert("Server IP copied!");
+    }
+  </script>
+
+</body>
+</html>
