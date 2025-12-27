@@ -1,307 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Blu1x SMP</title>
-<meta name="theme-color" content="#2563eb" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLU1X Network</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --bg:#020617;
-  --panel:#0b122f;
-  --text:#eaf0ff;
-  --muted:#9bb7ff;
-  --accent:#3b82f6;
-  --accent2:#1e40af;
-  --radius:18px;
-}
+  <style>
+    :root {
+      --bg: #0b0b0d;
+      --panel: #111118;
+      --white: #ffffff;
+      --muted: #bfbfc7;
+      --accent: #e6e6e6;
+      --glitch1: #9ffcff;
+      --glitch2: #ff9fd6;
+    }
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:Inter,system-ui;
-  color:var(--text);
-  background:
-    radial-gradient(900px 600px at 10% -10%, #0b2a6f 0%, transparent 60%),
-    radial-gradient(900px 600px at 110% 10%, #0b3ea8 0%, transparent 55%),
-    linear-gradient(120deg,#020617,#050b2e,#020617);
-  background-size:200% 200%;
-  animation:bg 18s ease infinite;
-  overflow-x:hidden;
-}
+    * { box-sizing: border-box; }
 
-@keyframes bg{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-}
+    body {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      background: radial-gradient(circle at top, #16161d, var(--bg));
+      color: var(--white);
+      overflow-x: hidden;
+    }
 
-.container{width:min(1200px,92%);margin:auto}
+    /* ---------- GLITCH ANIMATION ---------- */
+    .glitch {
+      position: relative;
+      font-family: Orbitron, sans-serif;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
 
-/* HEADER */
-header{
-  position:sticky;top:0;z-index:20;
-  backdrop-filter:blur(10px);
-  background:rgba(2,6,23,.75);
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-.nav{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:14px 0;
-}
-.brand{
-  display:flex;gap:.8rem;align-items:center;
-  text-decoration:none;color:var(--text)
-}
-.logo{
-  width:42px;height:42px;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  border-radius:12px;
-  display:grid;place-items:center;
-  font-family:'Press Start 2P';
-  color:#020617;
-}
-.nav a{color:var(--text);text-decoration:none;margin-left:14px;opacity:.85}
-.nav a:hover{opacity:1}
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      opacity: 0.8;
+    }
 
-/* HERO */
-.hero{padding:90px 0 70px}
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.4fr .9fr;
-  gap:40px;
-}
-.glitch{
-  position:relative;
-  font-family:'Press Start 2P';
-  font-size:clamp(2rem,3vw,2.6rem);
-}
-.glitch::before,.glitch::after{
-  content:attr(data-text);
-  position:absolute;left:0;top:0;width:100%;
-}
-.glitch::before{
-  color:#60a5fa;
-  animation:gt 2s infinite linear;
-}
-.glitch::after{
-  color:#1e3a8a;
-  animation:gb 1.6s infinite linear;
-}
-@keyframes gt{
-  0%{clip-path:inset(0 0 80% 0);transform:translate(-2px,-2px)}
-  50%{clip-path:inset(0 0 10% 0);transform:translate(2px,2px)}
-  100%{clip-path:inset(0 0 80% 0)}
-}
-@keyframes gb{
-  0%{clip-path:inset(80% 0 0 0);transform:translate(2px,1px)}
-  50%{clip-path:inset(10% 0 0 0);transform:translate(-2px,-1px)}
-  100%{clip-path:inset(80% 0 0 0)}
-}
+    .glitch::before {
+      left: 2px;
+      text-shadow: -2px 0 var(--glitch1);
+      animation: glitch 2.5s infinite linear alternate-reverse;
+    }
 
-.muted{color:var(--muted)}
-.btn{
-  display:inline-flex;
-  padding:12px 18px;
-  border-radius:14px;
-  font-weight:800;
-  text-decoration:none;
-  margin-right:12px;
-  transition:.25s;
-}
-.btn.primary{
-  background:var(--accent);
-  color:#020617;
-  box-shadow:0 0 30px rgba(59,130,246,.4);
-}
-.btn.primary:hover{
-  box-shadow:0 0 50px rgba(59,130,246,.9);
-  transform:translateY(-2px);
-}
-.btn.ghost{
-  border:1px solid rgba(255,255,255,.15);
-  color:var(--text);
-}
+    .glitch::after {
+      left: -2px;
+      text-shadow: 2px 0 var(--glitch2);
+      animation: glitch 1.8s infinite linear alternate-reverse;
+    }
 
-/* CARDS */
-.card{
-  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:var(--radius);
-  padding:20px;
-  animation:float 7s ease-in-out infinite;
-}
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-6px)}
-}
+    @keyframes glitch {
+      0% { clip-path: inset(0 0 90% 0); }
+      10% { clip-path: inset(10% 0 70% 0); }
+      20% { clip-path: inset(40% 0 20% 0); }
+      30% { clip-path: inset(80% 0 5% 0); }
+      40% { clip-path: inset(50% 0 30% 0); }
+      50% { clip-path: inset(10% 0 60% 0); }
+      60% { clip-path: inset(70% 0 15% 0); }
+      70% { clip-path: inset(20% 0 50% 0); }
+      80% { clip-path: inset(60% 0 25% 0); }
+      90% { clip-path: inset(30% 0 40% 0); }
+      100% { clip-path: inset(0 0 90% 0); }
+    }
 
-section{padding:40px 0}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    /* ---------- LAYOUT ---------- */
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
 
-/* TAGS */
-.tag{
-  display:inline-block;
-  padding:6px 10px;
-  border-radius:999px;
-  background:rgba(59,130,246,.15);
-  color:#bfdbfe;
-  font-size:.8rem;
-  margin:4px 6px 0 0;
-}
+    header p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-top: 20px;
+    }
 
-/* FAQ */
-details{
-  background:rgba(255,255,255,.04);
-  padding:14px;
-  border-radius:12px;
-  margin-bottom:10px;
-}
-summary{
-  cursor:pointer;
-  font-weight:700;
-}
+    .cta {
+      margin-top: 40px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-/* RESPONSIVE */
-@media(max-width:950px){
-  .hero-grid,.two,.grid-3,.grid-4{grid-template-columns:1fr}
-}
-</style>
+    .btn {
+      padding: 14px 26px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ffffff, #dcdcdc);
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255,255,255,0.15);
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 20px;
+    }
+
+    .section-title {
+      font-family: Orbitron, sans-serif;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #14141c, #0f0f15);
+      border-radius: 16px;
+      padding: 26px;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.25s, border 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    .card h3 {
+      font-family: Orbitron, sans-serif;
+      margin-top: 0;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ---------- Q&A ---------- */
+    details {
+      background: var(--panel);
+      border-radius: 14px;
+      padding: 18px 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    details p {
+      margin-top: 12px;
+      color: var(--muted);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      padding: 60px 20px 40px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer strong { color: var(--white); }
+  </style>
 </head>
-
 <body>
 
-<header>
-  <div class="container nav">
-    <a class="brand">
-      <div class="logo">B1</div>
-      <strong>Blu1x SMP</strong>
-    </a>
-    <nav>
-      <a href="#features">Features</a>
-      <a href="#faq">Q&A</a>
-      <a href="#join">Join</a>
-    </nav>
-  </div>
-</header>
+  <!-- HERO -->
+  <header>
+    <h1 class="glitch" data-text="BLU1X NETWORK">BLU1X NETWORK</h1>
+    <p>
+      A fully reimagined Minecraft SMP & Discord community.
+      Clean. Competitive. Community-driven.
+    </p>
 
-<main class="container">
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-grid">
-    <div>
-      <h1 class="glitch" data-text="Blu1x SMP">Blu1x SMP</h1>
-      <p class="muted">
-        A polished, community-driven Minecraft SMP with a modern blue aesthetic,
-        active Discord, and long-term survival focus.
-      </p>
-      <a class="btn primary" href="https://discord.gg/YEFsqdffjp" target="_blank">Join Discord</a>
-      <a class="btn ghost" href="#features">Explore</a>
+    <div class="cta">
+      <a class="btn" href="https://discord.com" target="_blank">Join Discord</a>
+      <a class="btn" href="#connect">Minecraft Server IP</a>
     </div>
+  </header>
 
-    <div class="card">
-      <strong>Status</strong>
-      <p class="muted">Java Edition • Survival • Community Hosted</p>
-      <p><strong>IP:</strong> blu1xsmp.aternos.me</p>
-      <div>
-        <span class="tag">SMP</span>
-        <span class="tag">Vanilla+</span>
-        <span class="tag">Events</span>
-        <span class="tag">Discord</span>
+  <!-- FEATURES -->
+  <section>
+    <h2 class="section-title">What Makes BLU1X Different</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Modern SMP</h3>
+        <p>
+          Carefully balanced survival with custom rules, anti-grief systems,
+          and a strong focus on player freedom.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Active Discord</h3>
+        <p>
+          Events, updates, support, and community discussions all live inside
+          our Discord server.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Lag-Free Gameplay</h3>
+        <p>
+          Optimized hosting and performance-focused configs for smooth,
+          enjoyable sessions.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Creator Friendly</h3>
+        <p>
+          Perfect for YouTubers and streamers — content is encouraged and
+          supported.
+        </p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FEATURES -->
-<section id="features">
-  <h2>Features</h2>
-  <div class="grid-4">
-    <div class="card">Long-term survival world</div>
-    <div class="card">Community events & seasons</div>
-    <div class="card">Active moderation team</div>
-    <div class="card">Blue-themed server identity</div>
-  </div>
-</section>
+  <!-- CONNECT -->
+  <section id="connect">
+    <h2 class="section-title">Join the SMP</h2>
+    <div class="card">
+      <h3>Minecraft Server IP</h3>
+      <p style="font-size:1.2rem; letter-spacing:1px;">
+        <strong>blu1xsmp.aternos.me</strong>
+      </p>
+      <p>
+        Java Edition • Survival Multiplayer • Community Driven
+      </p>
+    </div>
+  </section>
 
-<!-- DETAILS -->
-<section class="two">
-  <div class="card">
-    <h3>Server Philosophy</h3>
-    <p>
-      Blu1x SMP focuses on long-lasting worlds, player creativity, and fair gameplay.
-      No pay-to-win. No resets unless the community agrees.
-    </p>
-  </div>
-  <div class="card">
-    <h3>Gameplay Style</h3>
-    <p>
-      Mostly vanilla survival with quality-of-life tweaks,
-      community builds, and optional events.
-    </p>
-  </div>
-</section>
+  <!-- Q&A -->
+  <section>
+    <h2 class="section-title">Q & A</h2>
+    <div class="grid">
+      <details>
+        <summary>Is BLU1X SMP cracked?</summary>
+        <p>No. BLU1X is a premium Java Edition server.</p>
+      </details>
+      <details>
+        <summary>Do I need to apply?</summary>
+        <p>Applications are handled through Discord to keep the community safe.</p>
+      </details>
+      <details>
+        <summary>Is griefing allowed?</summary>
+        <p>No. Griefing and stealing are strictly prohibited.</p>
+      </details>
+      <details>
+        <summary>What version does it run?</summary>
+        <p>The server runs on the latest stable Minecraft version.</p>
+      </details>
+    </div>
+  </section>
 
-<!-- FAQ -->
-<section id="faq">
-  <h2>Q & A</h2>
-
-  <details>
-    <summary>Is Blu1x SMP beginner friendly?</summary>
-    <p>Yes. New players are welcome and helped by the community.</p>
-  </details>
-
-  <details>
-    <summary>Is this Java or Bedrock?</summary>
-    <p>Java Edition.</p>
-  </details>
-
-  <details>
-    <summary>Is voice chat required?</summary>
-    <p>No. Voice chat is optional.</p>
-  </details>
-
-  <details>
-    <summary>When is the server online?</summary>
-    <p>The server starts when players join via Aternos.</p>
-  </details>
-</section>
-
-<!-- JOIN -->
-<section id="join" class="two">
-  <div class="card">
-    <h3>How to Join</h3>
-    <p>Join the Discord → Read the info → Start playing.</p>
-  </div>
-  <div class="card">
-    <h3>Join Blu1x SMP</h3>
-    <a class="btn primary" href="https://discord.gg/YEFsqdffjp" target="_blank">
-      Join Discord
-    </a>
-  </div>
-</section>
-
-</main>
-
-<script>
-if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches){
-  document.querySelectorAll('.card').forEach((el,i)=>{
-    el.animate(
-      {opacity:[0,1], transform:['translateY(12px)','translateY(0)']},
-      {duration:400, delay:80*i, fill:'both'}
-    );
-  });
-}
-</script>
+  <!-- FOOTER -->
+  <footer>
+    <p>© BLU1X</p>
+    <p>Website designed by <strong>Ervin</strong></p>
+  </footer>
 
 </body>
 </html>
